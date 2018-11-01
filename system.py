@@ -6,12 +6,7 @@ import csv
 import pylab
 from tkinter.filedialog import askopenfilename
 from tkinter import messagebox
-import subproblem.is_graphical as is_g
-import subproblem.is_digraphical as is_d
-import subproblem.is_pseudographical as is_p
-import subproblem.is_multigraphical as is_m
-import subproblem.is_havel_hakimi as is_hh
-import subproblem.is_erdos_galli as is_eg
+import subproblem.search as s
 
 
 #when clicking graphical degree problem:
@@ -23,24 +18,24 @@ def hit_graphical_degree():
     tk.Label(window1, text='choose the sort of graphical degree problem you want to deal with: ', bg = 'yellow').place(x=10, y=10)
     
     is_g_button = tk.Button(window1, text = 'Is_graphical_search', \
-                            command = lambda: is_g.hit_is_graphical_search(window), \
+                            command = lambda: s.hit_search(window, "is_g"), \
                             width = 25, anchor = 'w')
     is_d_button = tk.Button(window1, text = 'Is_digraphical_search', \
-                            command = lambda: is_d.hit_is_digraphical_search(window), \
+                            command = lambda: s.hit_search(window, "is_d"), \
                             width = 25, anchor = 'w')
     is_m_button = tk.Button(window1, text = 'Is_multigraphical_search', \
-                                    command = lambda: is_m.hit_is_multigraphical_search(window), \
+                                    command = lambda: s.hit_search(window, "is_m"), \
                                     width = 25, anchor = 'w')
     is_p_button = tk.Button(window1, text = 'Is_pseudographical_search', \
-                                command = lambda: is_p.hit_is_pseudographical_search(window), \
+                                command = lambda: s.hit_search(window, "is_p"), \
                                 width = 25, anchor = 'w')
     is_hh_button = tk.Button(window1, text = 'Is_havel_hakimi_search', \
-                                command = lambda: is_hh.hit_is_havel_hakimi_search(window), \
+                                command = lambda: s.hit_search(window, "is_hh"), \
                                 width = 25, anchor = 'w')
     is_eg_button = tk.Button(window1, text = 'Is_erdos_galli_search', \
-                                command = lambda: is_eg.hit_is_erdos_galli_search(window), \
+                                command = lambda: s.hit_search(window, "is_eg"), \
                                 width = 25, anchor = 'w')
-                                
+
     is_g_button.place(x = 10, y = 50)
     is_d_button.place(x = 10, y = 80)
     is_m_button.place(x = 10, y = 110)
@@ -63,6 +58,8 @@ graphical_degree.place(x = 50, y = 50)
 #
 # --------------------------------------- Traversal --------------------------------------------------------------------
 #
+                               
+
 '''
 #when clickc(hit) on traversal_dfs_edges  to calculate input graph's using dfs
 def hit_traversal_dfs_edges():
